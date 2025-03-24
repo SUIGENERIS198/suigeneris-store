@@ -1,11 +1,31 @@
-// Show a welcome message
-alert("Welcome to SUIGENERIS Online Store!");
+const products = [
+    { name: "Bracelet", price: "KES 200" },
+    { name: "Necklace", price: "KES 500" },
+    { name: "Ring", price: "KES 150" }
+];
 
-// Example of DOM manipulation
-document.addEventListener("DOMContentLoaded", function () {
-    const heading = document.getElementById("main-heading");
-    if (heading) {
-        heading.style.color = "#007bff";
-        heading.innerText = "Welcome to SUIGENERIS Store - Enjoy Your Shopping!";
-    }
+const productList = document.getElementById('product-list');
+
+function loadProducts() {
+    productList.innerHTML = '';
+    products.forEach(product => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `<h3>${product.name}</h3><p>Price: ${product.price}</p><button>Add to Cart</button>`;
+        productList.appendChild(card);
+    });
+}
+
+document.getElementById('search').addEventListener('input', function(e) {
+    const searchValue = e.target.value.toLowerCase();
+    const filtered = products.filter(p => p.name.toLowerCase().includes(searchValue));
+    productList.innerHTML = '';
+    filtered.forEach(product => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `<h3>${product.name}</h3><p>Price: ${product.price}</p><button>Add to Cart</button>`;
+        productList.appendChild(card);
+    });
 });
+
+loadProducts();

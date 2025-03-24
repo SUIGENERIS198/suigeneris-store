@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUIGENERIS Online Store</title>
+    <title>Sui Generis Store</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <div class="logo">SUIGENERIS</div>
+        <img src="logo.jpg" alt="Sui Generis Logo" class="logo">
         <nav>
             <ul>
                 <li><a href="#">Home</a></li>
@@ -18,52 +18,16 @@
         </nav>
     </header>
 
-    <div class="search-bar">
-        <input type="text" placeholder="Search products...">
-        <button>Search</button>
-    </div>
+    <section class="search-filter">
+        <input type="text" id="search" placeholder="Search products...">
+    </section>
 
-    <div class="filters">
-        <label>Category:</label>
-        <select>
-            <option>All</option>
-            <option>Bracelet</option>
-            <option>Hardware</option>
-            <option>Ring</option>
-        </select>
-    </div>
-
-    <main>
-        <h2 id="main-heading">Our Products</h2>
-        <div class="product-list">
-            <div class="product-card">
-                <img src="https://via.placeholder.com/150" alt="Bracelet">
-                <h3>Bracelet</h3>
-                <p>Price: KES 200</p>
-                <button>Add to Cart</button>
-            </div>
-            <div class="product-card">
-                <img src="https://via.placeholder.com/150" alt="Hardware">
-                <h3>Hardware</h3>
-                <p>Price: KES 250</p>
-                <button>Add to Cart</button>
-            </div>
-            <div class="product-card">
-                <img src="https://via.placeholder.com/150" alt="Ring">
-                <h3>Ring</h3>
-                <p>Price: KES 300</p>
-                <button>Add to Cart</button>
-            </div>
-        </div>
-    </main>
+    <section class="products" id="product-list">
+        <!-- Products will be loaded here dynamically -->
+    </section>
 
     <footer>
-        <p>&copy; 2025 SUIGENERIS Store</p>
-        <div class="socials">
-            <a href="#">Facebook</a>
-            <a href="#">Instagram</a>
-            <a href="#">Twitter</a>
-        </div>
+        <p>&copy; 2025 Sui Generis Store | Contact: support@suigeneris.com</p>
     </footer>
 
     <script src="script.js"></script>
