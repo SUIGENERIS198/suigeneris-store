@@ -1,31 +1,39 @@
-const products = [
-    { name: "Bracelet", price: "KES 200" },
-    { name: "Necklace", price: "KES 500" },
-    { name: "Ring", price: "KES 150" }
-];
 
-const productList = document.getElementById('product-list');
+document.addEventListener('DOMContentLoaded', () => {
+    const products = [
+        { name: 'Bracelet', category: 'jewelry', price: 250 },
+        { name: 'T-shirt', category: 'clothing', price: 500 },
+        { name: 'Headphones', category: 'electronics', price: 3000 },
+        { name: 'Ring', category: 'jewelry', price: 400 },
+    ];
 
-function loadProducts() {
-    productList.innerHTML = '';
-    products.forEach(product => {
-        const card = document.createElement('div');
-        card.className = 'product-card';
-        card.innerHTML = `<h3>${product.name}</h3><p>Price: ${product.price}</p><button>Add to Cart</button>`;
-        productList.appendChild(card);
+    const productContainer = document.getElementById('products');
+    const searchInput = document.getElementById('searchInput');
+    const categoryFilter = document.getElementById('categoryFilter');
+
+    function displayProducts(items) {
+        productContainer.innerHTML = '';
+        items.forEach(p => {
+            const item = document.createElement('div');
+            item.classList.add('product-item');
+            item.innerHTML = `<h3>${p.name}</h3><p>Category: ${p.category}</p><p>Price: KES ${p.price}</p><button>Add to Cart</button>`;
+            productContainer.appendChild(item);
+        });
+    }
+
+    searchInput.addEventListener('input', () => {
+        const keyword = searchInput.value.toLowerCase();
+        const category = categoryFilter.value;
+        const filtered = products.filter(p => p.name.toLowerCase().includes(keyword) && (category === 'all' || p.category === category));
+        displayProducts(filtered);
     });
-}
 
-document.getElementById('search').addEventListener('input', function(e) {
-    const searchValue = e.target.value.toLowerCase();
-    const filtered = products.filter(p => p.name.toLowerCase().includes(searchValue));
-    productList.innerHTML = '';
-    filtered.forEach(product => {
-        const card = document.createElement('div');
-        card.className = 'product-card';
-        card.innerHTML = `<h3>${product.name}</h3><p>Price: ${product.price}</p><button>Add to Cart</button>`;
-        productList.appendChild(card);
+    categoryFilter.addEventListener('change', () => {
+        const keyword = searchInput.value.toLowerCase();
+        const category = categoryFilter.value;
+        const filtered = products.filter(p => p.name.toLowerCase().includes(keyword) && (category === 'all' || p.category === category));
+        displayProducts(filtered);
     });
+
+    displayProducts(products);
 });
-
-loadProducts();
