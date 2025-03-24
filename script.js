@@ -1,30 +1,11 @@
+// Show a welcome message
+alert("Welcome to SUIGENERIS Online Store!");
 
-let cart = [];
-
-function addToCart(productName, price) {
-    cart.push({ name: productName, price: price });
-    updateCart();
-}
-
-function updateCart() {
-    let cartItems = document.getElementById('cart-items');
-    cartItems.innerHTML = '';
-    let total = 0;
-    cart.forEach(item => {
-        let li = document.createElement('li');
-        li.textContent = item.name + " - KES " + item.price;
-        cartItems.appendChild(li);
-        total += item.price;
-    });
-    document.getElementById('total').textContent = total;
-}
-
-function checkout() {
-    if (cart.length === 0) {
-        alert("Your cart is empty!");
-        return;
+// Example of DOM manipulation
+document.addEventListener("DOMContentLoaded", function () {
+    const heading = document.getElementById("main-heading");
+    if (heading) {
+        heading.style.color = "#007bff";
+        heading.innerText = "Welcome to SUIGENERIS Store - Enjoy Your Shopping!";
     }
-    alert("Thank you for shopping at SUÎGENÊRÎS!");
-    cart = [];
-    updateCart();
-}
+});
